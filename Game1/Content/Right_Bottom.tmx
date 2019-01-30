@@ -2,41 +2,41 @@
 <map version="1.0" tiledversion="2017.06.27" orientation="orthogonal" renderorder="right-down" width="11" height="11" tilewidth="16" tileheight="16" nextobjectid="7">
  <properties>
   <property name="Connect_Bottom" type="bool" value="true"/>
-  <property name="Connect_Left" type="bool" value="true"/>
+  <property name="Connect_Left" type="bool" value="false"/>
   <property name="Connect_Right" type="bool" value="true"/>
-  <property name="Connect_Top" type="bool" value="true"/>
+  <property name="Connect_Top" type="bool" value="false"/>
  </properties>
  <tileset firstgid="1" name="tiles0" tilewidth="16" tileheight="16" tilecount="64" columns="16">
   <image source="../Tilesets/tiles0.png" width="256" height="64"/>
  </tileset>
  <layer name="Path" width="11" height="11">
   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,2,2,2,2,2,2,
 0,0,0,0,0,2,0,0,0,0,0,
-0,0,0,0,0,6,0,0,0,0,0,
-0,0,2,2,2,2,2,2,2,0,0,
-0,0,2,2,2,2,2,2,2,0,0,
-0,0,2,2,2,2,2,2,2,0,0,
-2,6,2,2,2,2,2,2,2,6,2,
-0,0,2,2,2,2,2,2,2,0,0,
-0,0,2,2,2,2,2,2,2,0,0,
-0,0,2,2,2,2,2,2,2,0,0,
-0,0,0,0,0,6,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
 0,0,0,0,0,2,0,0,0,0,0
 </data>
  </layer>
  <layer name="Wall" width="11" height="11">
   <data encoding="csv">
-1,1,1,1,17,0,17,1,1,1,1,
-1,17,13,17,17,0,17,17,17,17,1,
-1,17,0,0,0,0,0,0,0,17,1,
-1,17,0,0,0,0,0,0,0,17,1,
-17,17,0,0,0,0,0,0,0,17,17,
 0,0,0,0,0,0,0,0,0,0,0,
-17,17,0,0,0,0,0,0,0,17,17,
-1,17,0,0,0,0,0,0,0,17,1,
-1,17,0,0,0,0,0,0,0,17,1,
-1,17,17,17,17,0,17,17,13,17,1,
-1,1,1,1,17,0,17,1,1,1,1
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer name="Interact" width="11" height="11">
@@ -46,7 +46,7 @@
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,9,0,8,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,
@@ -54,9 +54,5 @@
 0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Events">
-  <object id="1" name="Spawn" x="80" y="80" width="16" height="16"/>
-  <object id="5" name="Up" x="96" y="80" width="16" height="16"/>
-  <object id="6" name="Up" x="64" y="80" width="16" height="16"/>
- </objectgroup>
+ <objectgroup name="Events"/>
 </map>

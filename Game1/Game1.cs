@@ -23,6 +23,38 @@ namespace Game1
             Content.RootDirectory = "Content";
         }
 
+        public bool CheckBounds()
+        {
+            bool check = false;
+
+            Rectangle playrec = new Rectangle(
+                map.ObjectGroups["Objects"].Objects["Player"].X,
+                map.ObjectGroups["Objects"].Objects["Player"].Y,
+                map.ObjectGroups["Objects"].Objects["Player"].Width,
+                map.ObjectGroups["Objects"].Objects["Player"].Height
+                );
+
+            for (int x = 0; x < map.Width; x++)
+            {
+                for (int y = 0; y < map.Height; y++)
+                {
+                    if (collision.GetTile(x, y) != 0)
+                    {
+                        Rectangle tile = new Rectangle(
+                            (int)x * tilepixel,
+                            (int)y * tilepixel,
+                            tilepixel,
+                            tilepixel
+                            );
+
+                        if (playrec.Intersects(tile))
+                            check = true;
+                    }
+                }
+            }
+
+            return check;
+        }
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -33,6 +65,7 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+
 
             base.Initialize();
         }
@@ -46,8 +79,8 @@ namespace Game1
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             map = Map.Load(Path.Combine(Content.RootDirectory, "center.tmx"), Content);
-            map.ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
-            viewportPosition = new Vector2(map.ObjectGroups["Events"].Objects["Spawn"].X - 80, map.ObjectGroups["Events"].Objects["Spawn"].Y - 80);
+            map.ObjectGroups["4Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
+            viewportPosition = new Vector2(map.ObjectGroups["4Events"].Objects["Spawn"].X - 80, map.ObjectGroups["4Events"].Objects["Spawn"].Y - 80);
 
             // TODO: use this.Content to load your game content here
         }
@@ -88,26 +121,32 @@ namespace Game1
             if (keyState.IsKeyDown(Keys.Down))
                 scrolly = -1;
 
-            bool action = true;
 
             if (keyState.IsKeyDown(Keys.Enter))
             {
-                action = false;
+                bool action = true;
+            }
+            else
+            {
+                bool action = false;
+            }
+
+
+            if (action == true)
+            {
                 scrollx += gamePadState.ThumbSticks.Left.X;
                 scrolly += gamePadState.ThumbSticks.Left.Y;
 
-                if (gamePadState.IsButtonDown(Buttons.Back) || keyState.IsKeyDown(Keys.Escape))
-                    this.Exit();
 
                 float scrollSpeed = 4.0f;
 
 
-                map.ObjectGroups["Events"].Objects["Spawn"].X += (int)(scrollx * scrollSpeed);
-                map.ObjectGroups["Events"].Objects["Spawn"].Y -= (int)(scrolly * scrollSpeed);
+                map.ObjectGroups["4Events"].Objects["Spawn"].X += (int)(scrollx * scrollSpeed);
+                map.ObjectGroups["4Events"].Objects["Spawn"].Y -= (int)(scrolly * scrollSpeed);
 
-
-
+                action = false;
             }
+            
 
             base.Update(gameTime);
             

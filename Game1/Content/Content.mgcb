@@ -37,3 +37,13 @@
 /processorParam:TextureFormat=Color
 /build:sprite.png
 
+#begin Maps/Final Maps/Center.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Center.tmx
+
+#begin Maps/Final Maps/Left_Bottom.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Left_Bottom.tmx
+
