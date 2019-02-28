@@ -47,3 +47,33 @@
 /processor:
 /build:Maps/Final Maps/Left_Bottom.tmx
 
+#begin Maps/Final Maps/Bottom_Top.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Bottom_Top.tmx
+
+#begin Maps/Final Maps/Left_Right.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Left_Right.tmx
+
+#begin Maps/Final Maps/Left_Top.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Left_Top.tmx
+
+#begin Maps/Final Maps/Right_Bottom.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Right_Bottom.tmx
+
+#begin Maps/Final Maps/Right_Top.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Right_Top.tmx
+
+#begin Maps/Final Maps/Template.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Template.tmx
+
