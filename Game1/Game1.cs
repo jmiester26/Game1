@@ -227,10 +227,15 @@ namespace Game1
             grid[6, 6] = Center;
 
 
-            Connect_Top[a, b] = Convert.ToBoolean(grid[a, b].ObjectGroups["Events"].Properties["Connect_Top"]);
-            Connect_Right[a, b] = Convert.ToBoolean(grid[a, b].ObjectGroups["Events"].Properties["Connect_Right"]);
-            Connect_Bottom[a, b] = Convert.ToBoolean(grid[a, b].ObjectGroups["Events"].Properties["Connect_Bottom"]);
-            Connect_Left[a, b] = Convert.ToBoolean(grid[a, b].ObjectGroups["Events"].Properties["Connect_Left"]);
+            Connect_Top[a, b] = Convert.ToBoolean(grid[a, b].Properties["Connect_Top"]);
+            Connect_Right[a, b] = Convert.ToBoolean(grid[a, b].Properties["Connect_Right"]);
+            Connect_Bottom[a, b] = Convert.ToBoolean(grid[a, b].Properties["Connect_Bottom"]);
+            Connect_Left[a, b] = Convert.ToBoolean(grid[a, b].Properties["Connect_Left"]);
+
+            Connect_Top[5, 5] = true;
+            Connect_Right[5, 5] = true;
+            Connect_Bottom[5, 5] = true;
+            Connect_Left[5, 5] = true;
 
 
             int k = 1;
@@ -241,25 +246,25 @@ namespace Game1
 
             {
 
-                if (Connect_Bottom[X_Order[k], Y_Order[k + 1]] is true)
-                    Connect_Top[X_Order[k], Y_Order[k]] = true;
+                if (Connect_Bottom[X_Order[k]-1, Y_Order[k + 1]-1] is true)
+                    Connect_Top[X_Order[k]-1, Y_Order[k] - 1] = true;
 
 
 
-                if (Connect_Top[X_Order[k], Y_Order[k - 1]] is true)
-                    Connect_Bottom[X_Order[k], Y_Order[k]] = true;
-
-
-
-
-                if (Connect_Left[X_Order[k], Y_Order[k]] is true)
-                    Connect_Right[X_Order[k - 1], Y_Order[k]] = true;
+                if (Connect_Top[X_Order[k] - 1, Y_Order[k - 1] - 1] is true)
+                    Connect_Bottom[X_Order[k] - 1, Y_Order[k] - 1] = true;
 
 
 
 
-                if (Connect_Right[X_Order[k], Y_Order[k]] is true)
-                    Connect_Left[X_Order[k + 1], Y_Order[k]] = true;
+                if (Connect_Left[X_Order[k] - 1, Y_Order[k] - 1] is true)
+                    Connect_Right[X_Order[k - 1] - 1, Y_Order[k] - 1] = true;
+
+
+
+
+                if (Connect_Right[X_Order[k] - 1, Y_Order[k] - 1] is true)
+                    Connect_Left[X_Order[k + 1] - 1, Y_Order[k] - 1] = true;
 
 
                 //---------------------------------------------------------------------------------------------------
@@ -334,9 +339,9 @@ namespace Game1
                     }
                 }
 
-            loopend:;
+                loopend:;
 
-
+                k = k + 1;
 
             }
             //loop end]
@@ -420,8 +425,14 @@ namespace Game1
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            foreach(Map i in grid)
-            i.Draw(spriteBatch, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), viewportPosition);
+            for (int i = 0; i < 11; i++)
+            {
+                for (int k = 0; k < 11; k++)
+                {
+                    grid[i,k].Draw(spriteBatch, new Rectangle(i*176, k*176,176,176),Vector2.Zero);
+                }
+            }
+            
             spriteBatch.End();
 
             base.Draw(gameTime);
