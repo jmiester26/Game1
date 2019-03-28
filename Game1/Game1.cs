@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.IO;
+using System.Collections.Generic;
 using Squared.Tiled;
 using System.Timers;
 using System;
@@ -375,105 +376,19 @@ namespace Game1
 
             {
 
-                if (Connect_Bottom[X_Order[k], Y_Order[k]] is true)
-                    Connect_Top[X_Order[k], Y_Order[k] - 1] = true;
-
-
-
-                if (Connect_Top[X_Order[k], Y_Order[k]] is true)
-                    Connect_Bottom[X_Order[k], Y_Order[k] + 1] = true;
-
-
-
-
-                if (Connect_Left[X_Order[k], Y_Order[k]] is true)
-                    Connect_Right[X_Order[k] - 1, Y_Order[k]] = true;
-
-
-
-
-                if (Connect_Right[X_Order[k], Y_Order[k]] is true)
-                    Connect_Left[X_Order[k] + 1, Y_Order[k]] = true;
-
-
-                //---------------------------------------------------------------------------------------------------
-
-
-                if (Connect_Top[X_Order[k], Y_Order[k]] is true)
-                {
-                    foreach (Map m in Up)
-                    {
-                        foreach (Map n in Down)
-                        {
-                            if (m == n)
-                            {
-                                grid[X_Order[k], Y_Order[k]] = m;
-                                goto loopend;
-                            }
-                        }
-                        foreach (Map n in Right)
-                        {
-                            if (m == n)
-                            {
-                                grid[X_Order[k], Y_Order[k]] = m;
-                                goto loopend;
-                            }
-                        }
-                        foreach (Map n in Left)
-                        {
-                            if (m == n)
-                            {
-                                grid[X_Order[k], Y_Order[k]] = m;
-                                goto loopend;
-                            }
-                        }
-                    }
-                }
-                //-----------------------------------------------------------------------------
-                if (Connect_Bottom[X_Order[k], Y_Order[k]] is true)
-                {
-                    foreach (Map m in Down)
-                    {
-                        foreach (Map n in Left)
-                        {
-                            if (m == n)
-                            {
-                                grid[X_Order[k], Y_Order[k]] = m;
-                                goto loopend;
-                            }
-                        }
-                        foreach (Map n in Right)
-                        {
-                            if (m == n)
-                            {
-                                grid[X_Order[k], Y_Order[k]] = m;
-                                goto loopend;
-                            }
-                        }
-                    }
-                }
-                //-------------------------------------------------------------------------------
-                if (Connect_Left[X_Order[k], Y_Order[k]] is true)
-                {
-                    foreach (Map m in Left)
-                    {
-                        foreach (Map n in Right)
-                        {
-                            if (m == n)
-                            {
-                                grid[X_Order[k], Y_Order[k]] = m;
-                                goto loopend;
-                            }
-                        }
-                    }
-                }
-
-                loopend:;
+            
 
                 k = k + 1;
 
             }
             //loop end]
+
+            maplist.Add(m);
+
+            List<Map> maplist = new List<Map>();
+            Random r = new Random();
+            grid[X_Order[k], Y_Order[k]] = maplist[r.Next(0, maplist.Count - 1)];
+
 
             //grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
             //viewportPosition = new Vector2(grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].X - 80, grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Y - 80);
