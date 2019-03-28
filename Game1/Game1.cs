@@ -19,6 +19,7 @@ namespace Game1
         Vector2 viewportPosition;
         Map Center, Left_Bottom, Bottom_Top, Left_Right, Left_Top, Right_Bottom, Right_Top, map;
         Map[,] grid = new Map[10, 10];
+        List<Map> maplist = new List<Map>();
 
         public Game1()
         {
@@ -375,17 +376,118 @@ namespace Game1
             while (k < 119)
 
             {
+                if (Connect_Top[X_Order[k], Y_Order[k]] is true)
+                {
+                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is true)
+                    {
+                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                //add top right left bottom
+                            }
+                            else
+                            {
+                                //add top left bottom
+                            }
+                        }
+                        else
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                //add top right bottom
+                            }
+                            else
+                            {
+                                maplist.Add(Bottom_Top); //top bottom
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                //add top right left
+                            }
+                            else
+                            {
+                                maplist.Add(Left_Top); //top left
+                            }
+                        }
+                        else
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                maplist.Add(Right_Top); //add top right
+                            }
+                            else
+                            {
+                                //add top
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is true)
+                    {
+                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                //add right left bottom
+                            }
+                            else
+                            {
+                                maplist.Add(Left_Bottom); //left bottom
+                            }
+                        }
+                        else
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                maplist.Add(Right_Bottom); //right bottom
+                            }
+                            else
+                            {
+                                //add bottom
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                maplist.Add(Left_Right); //right left
+                            }
+                            else
+                            {
+                                //add left
+                            }
+                        }
+                        else
+                        {
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            {
+                                //add right
+                            }
+                            else
+                            {
+                                //add blank
+                            }
+                        }
+                    }
+                }
 
-            
 
                 k = k + 1;
 
             }
             //loop end]
-
-            maplist.Add(m);
-
-            List<Map> maplist = new List<Map>();
             Random r = new Random();
             grid[X_Order[k], Y_Order[k]] = maplist[r.Next(0, maplist.Count - 1)];
 
@@ -393,10 +495,9 @@ namespace Game1
             //grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
             //viewportPosition = new Vector2(grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].X - 80, grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Y - 80);
 
-
+        }
 
             // TODO: use this.Content to load your game content here
-        }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
