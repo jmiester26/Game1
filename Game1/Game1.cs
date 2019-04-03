@@ -17,7 +17,7 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Vector2 viewportPosition;
-        Map Center, Left_Bottom, Bottom_Top, Left_Right, Left_Top, Right_Bottom, Right_Top, map;
+        Map Center, Left_Bottom, Bottom_Top, Left_Right, Left_Top, Right_Bottom, Right_Top, All, Bottom, Left1, Top, Right1, Left_Bottom_Right, Left_Bottom_Top, Right_Top_Bottom, Right_Top_Left, map;
         Map[,] grid = new Map[10, 10];
         List<Map> maplist = new List<Map>();
 
@@ -57,30 +57,55 @@ namespace Game1
             Left_Top = Map.Load(Path.Combine(Content.RootDirectory, "Left_Top.tmx"), Content);
             Right_Bottom = Map.Load(Path.Combine(Content.RootDirectory, "Right_Bottom.tmx"), Content);
             Right_Top = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top.tmx"), Content);
+            All = Map.Load(Path.Combine(Content.RootDirectory, "All.tmx"), Content);
+            Right1 = Map.Load(Path.Combine(Content.RootDirectory, "Right.tmx"), Content);
+            Left1 = Map.Load(Path.Combine(Content.RootDirectory, "Left.tmx"), Content);
+            Top = Map.Load(Path.Combine(Content.RootDirectory, "Top.tmx"), Content);
+            Bottom = Map.Load(Path.Combine(Content.RootDirectory, "Bottom.tmx"), Content);
+            Left_Bottom_Right = Map.Load(Path.Combine(Content.RootDirectory, "Left_Bottom_Right.tmx"), Content);
+            Left_Bottom_Top = Map.Load(Path.Combine(Content.RootDirectory, "Left_Bottom_Top.tmx"), Content);
+            Right_Top_Bottom = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top_Bottom.tmx"), Content);
+            Right_Top_Left = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top_Left.tmx"), Content);
 
             int a = 6;
             int b = 6;
 
-            Map[] Down = new Map[4];
-            Map[] Right = new Map[4];
-            Map[] Up = new Map[4];
-            Map[] Left = new Map[4];
+            Map[] Down = new Map[7];
+            Map[] Right = new Map[7];
+            Map[] Up = new Map[7];
+            Map[] Left = new Map[7];
 
+            Down[0] = All;
             Down[1] = Left_Bottom;
             Down[2] = Bottom_Top;
             Down[3] = Right_Bottom;
+            Down[4] = Left_Bottom_Right;
+            Down[5] = Left_Bottom_Top;
+            Down[6] = Right_Top_Bottom;
 
+            Right[0] = All;
             Right[1] = Left_Right;
             Right[2] = Right_Bottom;
             Right[3] = Right_Top;
+            Right[4] = Left_Bottom_Right;
+            Right[5] = Right_Top_Bottom;
+            Right[6] = Right_Top_Left;
 
+            Up[0] = All;
             Up[1] = Left_Top;
             Up[2] = Bottom_Top;
             Up[3] = Right_Top;
+            Up[4] = Left_Bottom_Top;
+            Up[5] = Right_Top_Bottom;
+            Up[6] = Right_Top_Left;
 
+            Left[0] = All;
             Left[1] = Left_Bottom;
             Left[2] = Left_Right;
             Left[3] = Left_Top;
+            Left[4] = Left_Bottom_Right;
+            Left[5] = Left_Bottom_Top;
+            Left[6] = Right_Top_Left;
 
 
             int[] X_Order = new int[122];
@@ -264,91 +289,91 @@ namespace Game1
             Y_Order[38] = 3;
             Y_Order[39] = 2;
 
-            Y_Order[40] = 0;
-            Y_Order[41] = 1;
-            Y_Order[42] = 2;
-            Y_Order[43] = 3;
-            Y_Order[44] = 4;
-            Y_Order[45] = 5;
-            Y_Order[46] = 6;
-            Y_Order[47] = 7;
-            Y_Order[48] = 8;
-            Y_Order[49] = 9;
-            Y_Order[50] = 10;
-            Y_Order[51] = 9;
-            Y_Order[52] = 8;
-            Y_Order[53] = 7;
-            Y_Order[54] = 6;
-            Y_Order[55] = 5;
-            Y_Order[56] = 4;
-            Y_Order[57] = 3;
-            Y_Order[58] = 2;
-            Y_Order[59] = 1;
+            Y_Order[40] = 1;
+            Y_Order[41] = 2;
+            Y_Order[42] = 3;
+            Y_Order[43] = 4;
+            Y_Order[44] = 5;
+            Y_Order[45] = 6;
+            Y_Order[46] = 7;
+            Y_Order[47] = 8;
+            Y_Order[48] = 9;
+            Y_Order[49] = 10;
+            Y_Order[50] = 11;
+            Y_Order[51] = 10;
+            Y_Order[52] = 9;
+            Y_Order[53] = 8;
+            Y_Order[54] = 7;
+            Y_Order[55] = 6;
+            Y_Order[56] = 5;
+            Y_Order[57] = 4;
+            Y_Order[58] = 3;
+            Y_Order[59] = 2;
 
-            Y_Order[60] = 0;
-            Y_Order[61] = 1;
-            Y_Order[62] = 2;
-            Y_Order[63] = 3;
-            Y_Order[64] = 4;
-            Y_Order[65] = 6;
-            Y_Order[66] = 7;
-            Y_Order[67] = 8;
-            Y_Order[68] = 9;
-            Y_Order[69] = 10;
-            Y_Order[70] = 10;
-            Y_Order[71] = 9;
-            Y_Order[72] = 8;
-            Y_Order[73] = 7;
-            Y_Order[74] = 6;
-            Y_Order[75] = 4;
-            Y_Order[76] = 3;
-            Y_Order[77] = 2;
-            Y_Order[78] = 1;
-            Y_Order[79] = 0;
+            Y_Order[60] = 1;
+            Y_Order[61] = 2;
+            Y_Order[62] = 3;
+            Y_Order[63] = 4;
+            Y_Order[64] = 5;
+            Y_Order[65] = 7;
+            Y_Order[66] = 8;
+            Y_Order[67] = 9;
+            Y_Order[68] = 10;
+            Y_Order[69] = 11;
+            Y_Order[70] = 11;
+            Y_Order[71] = 10;
+            Y_Order[72] = 9;
+            Y_Order[73] = 8;
+            Y_Order[74] = 7;
+            Y_Order[75] = 5;
+            Y_Order[76] = 4;
+            Y_Order[77] = 3;
+            Y_Order[78] = 2;
+            Y_Order[79] = 1;
 
-            Y_Order[80] = 0;
-            Y_Order[81] = 1;
-            Y_Order[82] = 2;
-            Y_Order[83] = 3;
-            Y_Order[84] = 7;
-            Y_Order[85] = 8;
-            Y_Order[86] = 9;
-            Y_Order[87] = 10;
-            Y_Order[88] = 10;
-            Y_Order[89] = 9;
-            Y_Order[90] = 8;
-            Y_Order[91] = 7;
-            Y_Order[92] = 3;
-            Y_Order[93] = 2;
-            Y_Order[94] = 1;
-            Y_Order[95] = 0;
+            Y_Order[80] = 1;
+            Y_Order[81] = 2;
+            Y_Order[82] = 3;
+            Y_Order[83] = 4;
+            Y_Order[84] = 8;
+            Y_Order[85] = 9;
+            Y_Order[86] = 10;
+            Y_Order[87] = 11;
+            Y_Order[88] = 11;
+            Y_Order[89] = 10;
+            Y_Order[90] = 9;
+            Y_Order[91] = 8;
+            Y_Order[92] = 4;
+            Y_Order[93] = 3;
+            Y_Order[94] = 2;
+            Y_Order[95] = 1;
 
-            Y_Order[96] = 0;
-            Y_Order[97] = 1;
-            Y_Order[98] = 2;
-            Y_Order[99] = 8;
-            Y_Order[100] = 9;
-            Y_Order[101] = 10;
-            Y_Order[102] = 10;
-            Y_Order[103] = 9;
-            Y_Order[104] = 8;
-            Y_Order[105] = 2;
-            Y_Order[106] = 1;
-            Y_Order[107] = 0;
+            Y_Order[96] = 1;
+            Y_Order[97] = 2;
+            Y_Order[98] = 3;
+            Y_Order[99] = 9;
+            Y_Order[100] = 10;
+            Y_Order[101] = 11;
+            Y_Order[102] = 11;
+            Y_Order[103] = 10;
+            Y_Order[104] = 9;
+            Y_Order[105] = 3;
+            Y_Order[106] = 2;
+            Y_Order[107] = 1;
 
-            Y_Order[108] = 0;
-            Y_Order[109] = 1;
-            Y_Order[110] = 9;
-            Y_Order[111] = 10;
-            Y_Order[112] = 10;
-            Y_Order[113] = 9;
-            Y_Order[114] = 1;
-            Y_Order[115] = 0;
+            Y_Order[108] = 1;
+            Y_Order[109] = 2;
+            Y_Order[110] = 10;
+            Y_Order[111] = 11;
+            Y_Order[112] = 11;
+            Y_Order[113] = 10;
+            Y_Order[114] = 2;
+            Y_Order[115] = 1;
 
-            Y_Order[116] = 0;
-            Y_Order[117] = 10;
-            Y_Order[118] = 10;
-            Y_Order[119] = 0;
+            Y_Order[116] = 1;
+            Y_Order[117] = 11;
+            Y_Order[118] = 11;
+            Y_Order[119] = 1;
 
 
             bool[,] Connect_Top = new bool[11, 11];
@@ -384,18 +409,18 @@ namespace Game1
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true)
                             {
-                                //add top right left bottom
+                                maplist.Add(All); //add top right left bottom
                             }
                             else
                             {
-                                //add top left bottom
+                                maplist.Add(Left_Bottom_Top);//add top left bottom
                             }
                         }
                         else
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true)
                             {
-                                //add top right bottom
+                                maplist.Add(Right_Top_Bottom); //add top right bottom
                             }
                             else
                             {
@@ -409,7 +434,7 @@ namespace Game1
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true)
                             {
-                                //add top right left
+                                maplist.Add(Right_Top_Left); //add top right left
                             }
                             else
                             {
@@ -424,7 +449,7 @@ namespace Game1
                             }
                             else
                             {
-                                //add top
+                                maplist.Add(Top);//add top
                             }
                         }
                     }
@@ -437,7 +462,7 @@ namespace Game1
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true)
                             {
-                                //add right left bottom
+                                maplist.Add(Left_Bottom_Right); //add right left bottom
                             }
                             else
                             {
@@ -452,7 +477,7 @@ namespace Game1
                             }
                             else
                             {
-                                //add bottom
+                                maplist.Add(Bottom); //add bottom
                             }
                         }
                     }
@@ -466,14 +491,14 @@ namespace Game1
                             }
                             else
                             {
-                                //add left
+                                maplist.Add(Left1); //add left
                             }
                         }
                         else
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true)
                             {
-                                //add right
+                                maplist.Add(Right1); //add right
                             }
                             else
                             {
@@ -483,13 +508,19 @@ namespace Game1
                     }
                 }
 
-
+                Random r = new Random();
+                if (maplist.Count > 1)
+                {
+                    grid[X_Order[k], Y_Order[k]] = maplist[r.Next(0, maplist.Count - 1)];
+                }
+                else
+                {
+                    grid[X_Order[k], Y_Order[k]] = maplist[1];
+                }
                 k = k + 1;
 
             }
             //loop end]
-            Random r = new Random();
-            grid[X_Order[k], Y_Order[k]] = maplist[r.Next(0, maplist.Count - 1)];
 
 
             //grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");

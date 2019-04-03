@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="2017.06.27" orientation="orthogonal" renderorder="right-down" width="11" height="11" tilewidth="16" tileheight="16" nextobjectid="7">
+ <properties>
+  <property name="Connect_Bottom" type="bool" value="true"/>
+  <property name="Connect_Left" type="bool" value="true"/>
+  <property name="Connect_Right" type="bool" value="true"/>
+  <property name="Connect_Top" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" name="tiles0" tilewidth="16" tileheight="16" tilecount="64" columns="16">
+  <image source="../Tilesets/tiles0.png" width="256" height="64"/>
+ </tileset>
+ <layer name="Path" width="11" height="11">
+  <data encoding="csv">
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+2,2,2,2,2,2,2,2,2,2,2,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0,
+0,0,0,0,0,2,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Wall" width="11" height="11">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="Interact" width="11" height="11">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="Events"/>
+</map>

@@ -77,3 +77,48 @@
 /processor:
 /build:Maps/Final Maps/Template.tmx
 
+#begin Maps/Final Maps/All.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/All.tmx
+
+#begin Maps/Final Maps/Bottom.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Bottom.tmx
+
+#begin Maps/Final Maps/Left.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Left.tmx
+
+#begin Maps/Final Maps/Left_Bottom_Right.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Left_Bottom_Right.tmx
+
+#begin Maps/Final Maps/Left_Bottom_Top.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Left_Bottom_Top.tmx
+
+#begin Maps/Final Maps/Right.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Right.tmx
+
+#begin Maps/Final Maps/Right_Top_Bottom.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Right_Top_Bottom.tmx
+
+#begin Maps/Final Maps/Right_Top_Left.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Right_Top_Left.tmx
+
+#begin Maps/Final Maps/Top.tmx
+/importer:
+/processor:
+/build:Maps/Final Maps/Top.tmx
+
