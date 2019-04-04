@@ -537,6 +537,8 @@ namespace Game1
                     }
                 }
 
+                Console.WriteLine(maplist.Count);
+
                 Random r = new Random();
                 if (maplist.Count > 1)
                 {
@@ -568,12 +570,13 @@ namespace Game1
             }
 
             grid[6, 6] = Center;
+            
             //loop end]
 
-
-            //grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
-            //viewportPosition = new Vector2(grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].X - 80, grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Y - 80);
-
+            //Events = grid.Layers("Events");
+            //tilepixel = map.TileWidth;
+            grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
+            viewportPosition = new Vector2(grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].X, grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Y);
         }
 
             // TODO: use this.Content to load your game content here
@@ -649,14 +652,13 @@ namespace Game1
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            for (int i = 0; i < 10; i++)
+            for (int i = 1; i < 12; i++)
             {
-                for (int k = 0; k < 10; k++)
+                for (int k = 1; k < 12; k++)
                 {
-                    grid[i, k].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), Vector2.Zero);
+                    grid[i, k].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
                 }
             }
-
             spriteBatch.End();
 
             base.Draw(gameTime);
