@@ -403,6 +403,8 @@ namespace Game1
 
             int k = 1;
 
+            // set k to 0, give X ord and Y ord 0 values nad 12 values
+
             //-----------------------------------------------------------------------------------
 
             while (k < 119)
@@ -428,7 +430,7 @@ namespace Game1
                 if (Connect_Right[X_Order[k], Y_Order[k]] is false)
                     Connect_Left[X_Order[k] + 1, Y_Order[k]] = false;
 
-
+                //-------------------------------------------------------------------------------------------
 
                 if (Connect_Top[X_Order[k], Y_Order[k]] is true)
                 {
@@ -538,7 +540,7 @@ namespace Game1
                 }
 
                 Console.WriteLine(maplist.Count);
-
+                //-------------------------------------------------------------------------
                 Random r = new Random();
                 if (maplist.Count > 1)
                 {
@@ -549,8 +551,8 @@ namespace Game1
                     Console.WriteLine(maplist.Count);
                     grid[X_Order[k], Y_Order[k]] = maplist[0];
                 }
-
-                if(!Down.Contains(grid[X_Order[k], Y_Order[k]]))
+                //-------------------------------------------------------------------------
+                if (!Down.Contains(grid[X_Order[k], Y_Order[k]]))
                 {
                     Connect_Bottom[X_Order[k], Y_Order[k]] = false;
                 }
@@ -652,11 +654,13 @@ namespace Game1
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            //Center.Draw(spriteBatch, new Rectangle(176, 176, 352, 352), viewportPosition);
             for (int i = 1; i < 12; i++)
             {
                 for (int k = 1; k < 12; k++)
                 {
-                    grid[i, k].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
+                    //Center.Draw(spriteBatch, new Rectangle(176, 176, 176, 176), viewportPosition);
+                    grid[1, 1].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
                 }
             }
             spriteBatch.End();

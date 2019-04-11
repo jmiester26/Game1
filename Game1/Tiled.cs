@@ -62,6 +62,7 @@ namespace Squared.Tiled
         public string Image;
         protected Texture2D _Texture;
         protected int _TexWidth, _TexHeight;
+        public int columns;
 
         internal static Tileset Load(XmlReader reader)
         {
@@ -71,6 +72,7 @@ namespace Squared.Tiled
             result.FirstTileID = int.Parse(reader.GetAttribute("firstgid"));
             result.TileWidth = int.Parse(reader.GetAttribute("tilewidth"));
             result.TileHeight = int.Parse(reader.GetAttribute("tileheight"));
+            result.TileHeight = int.Parse(reader.GetAttribute("columns"));
             int.TryParse(reader.GetAttribute("margin"), out result.Margin);
             int.TryParse(reader.GetAttribute("spacing"), out result.Spacing);
 
@@ -1052,9 +1054,9 @@ namespace Squared.Tiled
 
             foreach (var tileset in result.Tilesets.Values)
             {
-                //tileset.Texture = content.Load<Texture2D>(
-                //    Path.Combine(Path.GetDirectoryName(tileset.Image), Path.GetFileNameWithoutExtension(tileset.Image))
-               // );
+                tileset.Texture = content.Load<Texture2D>(
+                    Path.Combine(Path.GetDirectoryName(tileset.Image), Path.GetFileNameWithoutExtension(tileset.Image))
+                );
             }
 
 
