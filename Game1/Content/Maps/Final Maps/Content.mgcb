@@ -122,37 +122,3 @@
 /processor:
 /build:Maps/Final Maps/Top.tmx
 
-#begin Maps/Final Maps/Content.mgcb
-/importer:
-/processor:
-/build:Maps/Final Maps/Content.mgcb
-
-#begin Maps/Final Maps/sprite.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Maps/Final Maps/sprite.png
-
-#begin Maps/Final Maps/tiles0.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Maps/Final Maps/tiles0.png
-
-#begin Maps/Final Maps/Wall.tmx
-/importer:
-/processor:
-/build:Maps/Final Maps/Wall.tmx
-
