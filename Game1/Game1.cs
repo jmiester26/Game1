@@ -70,7 +70,7 @@ namespace Game1
             Left_Bottom_Top = Map.Load(Path.Combine(Content.RootDirectory, "Left_Bottom_Top.tmx"), Content);
             Right_Top_Bottom = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top_Bottom.tmx"), Content);
             Right_Top_Left = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top_Left.tmx"), Content);
-            Wall = Map.Load(Path.Combine(Content.RootDirectory, "Wall.tmx"), Content);
+            //Wall = Map.Load(Path.Combine(Content.RootDirectory, "Wall.tmx"), Content);
 
             List<Map> Down = new List<Map>();
             List<Map> Right = new List<Map>();
@@ -242,54 +242,50 @@ namespace Game1
             X_Order[117] = 11;
             X_Order[118] = 1;
             X_Order[119] = 1;
+            //--------------------------------------------------------------------------------
+            Y_Order[0] = 5;
+            Y_Order[1] = 6;
+            Y_Order[2] = 7;
+            Y_Order[3] = 6;
 
+            Y_Order[4] = 4;
+            Y_Order[5] = 5;
+            Y_Order[6] = 6;
+            Y_Order[7] = 7;
+            Y_Order[8] = 8;
+            Y_Order[9] = 7;
+            Y_Order[10] = 6;
+            Y_Order[11] = 5;
 
+            Y_Order[12] = 3;
+            Y_Order[13] = 4;
+            Y_Order[14] = 5;
+            Y_Order[15] = 6;
+            Y_Order[16] = 7;
+            Y_Order[17] = 8;
+            Y_Order[18] = 9;
+            Y_Order[19] = 8;
+            Y_Order[20] = 7;
+            Y_Order[21] = 6;
+            Y_Order[22] = 5;
+            Y_Order[23] = 4;
 
-
-
-            Y_Order[0] = 4;
-            Y_Order[1] = 5;
-            Y_Order[2] = 6;
-            Y_Order[3] = 5;
-
-            Y_Order[4] = 3;
-            Y_Order[5] = 4;
-            Y_Order[6] = 5;
-            Y_Order[7] = 6;
-            Y_Order[8] = 7;
-            Y_Order[9] = 6;
-            Y_Order[10] = 5;
-            Y_Order[11] = 4;
-
-            Y_Order[12] = 2;
-            Y_Order[13] = 3;
-            Y_Order[14] = 4;
-            Y_Order[15] = 5;
-            Y_Order[16] = 6;
-            Y_Order[17] = 7;
-            Y_Order[18] = 8;
-            Y_Order[19] = 7;
-            Y_Order[20] = 6;
-            Y_Order[21] = 5;
-            Y_Order[22] = 4;
-            Y_Order[23] = 3;
-
-            Y_Order[24] = 1;
-            Y_Order[25] = 2;
-            Y_Order[26] = 3;
-            Y_Order[27] = 4;
-            Y_Order[28] = 5;
-            Y_Order[29] = 6;
-            Y_Order[30] = 7;
-            Y_Order[31] = 8;
-            Y_Order[32] = 6;
-            Y_Order[33] = 8;
-            Y_Order[34] = 7;
-            Y_Order[35] = 6;
-            Y_Order[36] = 5;
-            Y_Order[37] = 4;
-            Y_Order[38] = 3;
-            Y_Order[39] = 2;
+            Y_Order[24] = 2;
+            Y_Order[25] = 3;
+            Y_Order[26] = 4;
+            Y_Order[27] = 5;
+            Y_Order[28] = 6;
+            Y_Order[29] = 7;
+            Y_Order[30] = 8;
+            Y_Order[31] = 9;
+            Y_Order[32] = 10;
+            Y_Order[33] = 9;
+            Y_Order[34] = 8;
+            Y_Order[35] = 7;
+            Y_Order[36] = 6;
+            Y_Order[37] = 5;
+            Y_Order[38] = 4;
+            Y_Order[39] = 3;
 
             Y_Order[40] = 1;
             Y_Order[41] = 2;
@@ -678,16 +674,18 @@ namespace Game1
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            Center.Draw(spriteBatch, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), viewportPosition);
+            //Center.Draw(spriteBatch, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), viewportPosition);
 
             //grid[6, 6].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
+            grid[1, 1] = Right_Bottom;
+            grid[6, 5] = Left_Bottom_Top;
 
             for (int i = 1; i < 12; i++)
             {
                 for (int k = 1; k < 12; k++)
                 {
                     //Center.Draw(spriteBatch, new Rectangle(176, 176, 176, 176), viewportPosition);
-                    //grid[6, 6].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
+                    grid[i, k].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
                 }
             }
 
