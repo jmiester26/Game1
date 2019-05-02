@@ -6,10 +6,8 @@
   <property name="Connect_Right" type="bool" value="true"/>
   <property name="Connect_Top" type="bool" value="true"/>
  </properties>
+
  <tileset firstgid="1" name="tiles0" tilewidth="16" tileheight="16" tilecount="64" columns="16">
-  <image source="../Tilesets/tiles0.png" width="256" height="64"/>
- </tileset>
- <tileset firstgid="65" name="tiles0" tilewidth="16" tileheight="16" tilecount="64" columns="16">
   <image source="Tilesets/tiles0.png" width="256" height="64"/>
  </tileset>
  <layer id="1" name="Path" width="11" height="11">
@@ -29,17 +27,17 @@
  </layer>
  <layer id="2" name="Wall" width="11" height="11">
   <data encoding="csv">
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
 0,0,0,0,0,0,0,0,0,0,0,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65,
-65,65,65,65,65,0,65,65,65,65,65
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,1,0,1,1,1,1,1
 </data>
  </layer>
  <layer id="3" name="Interact" width="11" height="11">

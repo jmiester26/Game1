@@ -17,11 +17,14 @@ namespace Game1
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Vector2 viewportPosition;
+        Vector2 currentMap;
         Map Center, Left_Bottom, Bottom_Top, Left_Right, Left_Top, Right_Bottom, Right_Top, All, Bottom, Left1, Top, Right1, Left_Bottom_Right, Left_Bottom_Top, Right_Top_Bottom, Right_Top_Left, map, Wall;
         Map[,] grid = new Map[13, 13];
         List<Map> maplist = new List<Map>();
         int tilepixel;
+        Texture2D test;
         Layer collision;
+        Random r;
 
         public Game1()
         {
@@ -39,6 +42,9 @@ namespace Game1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferWidth = 720;
+            graphics.PreferredBackBufferHeight= 720;
+            graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -53,7 +59,7 @@ namespace Game1
             spriteBatch = new SpriteBatch(GraphicsDevice);
             //collision = map.Layers["Collision"];
             //tilepixel = map.TileWidth;
-
+            test = Content.Load<Texture2D>("Tilesets/tiles0");
             Center = Map.Load(Path.Combine(Content.RootDirectory, "Center.tmx"), Content);
             Left_Bottom = Map.Load(Path.Combine(Content.RootDirectory, "Left_Bottom.tmx"), Content);
             Bottom_Top = Map.Load(Path.Combine(Content.RootDirectory, "Bottom_Top.tmx"), Content);
@@ -70,7 +76,7 @@ namespace Game1
             Left_Bottom_Top = Map.Load(Path.Combine(Content.RootDirectory, "Left_Bottom_Top.tmx"), Content);
             Right_Top_Bottom = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top_Bottom.tmx"), Content);
             Right_Top_Left = Map.Load(Path.Combine(Content.RootDirectory, "Right_Top_Left.tmx"), Content);
-            //Wall = Map.Load(Path.Combine(Content.RootDirectory, "Wall.tmx"), Content);
+            Wall = Map.Load(Path.Combine(Content.RootDirectory, "Wall.tmx"), Content);
 
             List<Map> Down = new List<Map>();
             List<Map> Right = new List<Map>();
@@ -156,7 +162,7 @@ namespace Game1
             X_Order[37] = 3;
             X_Order[38] = 4;
             X_Order[39] = 5;
-            
+
             X_Order[40] = 6;
             X_Order[41] = 7;
             X_Order[42] = 8;
@@ -414,8 +420,9 @@ namespace Game1
             while (k < 119)
 
             {
+                maplist.Clear();
                 //-------------------------------------------------------------------------------------------
-                
+
                 if (Connect_Bottom[X_Order[k], Y_Order[k] + 1] is false)
                     Connect_Top[X_Order[k], Y_Order[k]] = false;
 
@@ -425,7 +432,7 @@ namespace Game1
 
 
                 if (Connect_Left[X_Order[k] + 1, Y_Order[k]] is false)
-                    Connect_Right[X_Order[k] , Y_Order[k]] = false;
+                    Connect_Right[X_Order[k], Y_Order[k]] = false;
 
 
                 if (Connect_Right[X_Order[k] - 1, Y_Order[k]] is false)
@@ -541,7 +548,7 @@ namespace Game1
                             }
                             else
                             {
-                                //add blank
+                                maplist.Add(Wall);
                             }
                         }
                     }
@@ -555,7 +562,7 @@ namespace Game1
                 //
                 //
                 //-------------------------------------------------------------------------
-                Random r = new Random();
+                r = new Random();
                 if (maplist.Count > 1)
                 {
                     grid[X_Order[k], Y_Order[k]] = maplist[r.Next(0, maplist.Count - 1)];
@@ -588,14 +595,16 @@ namespace Game1
                 k = k + 1;
             }
 
-            grid[6, 6] = Center;
-            
+
+            //grid[7, 7] = Center;
+
             //loop end]
 
             //Events = grid.Layers("Events");
             //tilepixel = map.TileWidth;
-            Center.ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
-            viewportPosition = new Vector2(grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].X, grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Y);
+            currentMap = new Vector2(6, 6);
+            grid[6, 6].ObjectGroups["Events"].Objects["Spawn"].Texture = Content.Load<Texture2D>("sprite");
+            viewportPosition = new Vector2(graphics.PreferredBackBufferWidth/2,graphics.PreferredBackBufferHeight/2);
         }
 
             // TODO: use this.Content to load your game content here
@@ -616,7 +625,7 @@ namespace Game1
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-           // viewportPosition= new Vector2(map.ObjectGroups["objects"].Objects["Player"].X - (graphics.PreferredBackBufferWidth/2), map.ObjectGroups["objects"].Objects["Player"].Y - (graphics.PreferredBackBufferHeight/2));
+           
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -674,20 +683,32 @@ namespace Game1
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            //Center.Draw(spriteBatch, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), viewportPosition);
+            //Center.Draw(spriteBatch, new Rectangle(0, 0, 176, 176), new Vector2(0,0));
+            //All.Draw(spriteBatch, new Rectangle(176, 0, 176, 176), new Vector2(0, 0));
+            //Left1.Draw(spriteBatch, new Rectangle(176 * 2, 0, 176, 176), new Vector2(0, 0));
+            //Left_Bottom_Top.Draw(spriteBatch, new Rectangle(176 * 3, 0, 176, 176), new Vector2(0, 0));
+            //Right_Bottom.Draw(spriteBatch, new Rectangle(176 * 4, 0, 176, 176), new Vector2(0, 0));
+            Rectangle rec = new Rectangle(0, 0, 176, 176);
+            //grid[0, 0] = Wall;
+            //grid[2, 2] = Top;
+            //grid[2, 2].Draw(spriteBatch, new Rectangle(2*176, 2*176, 176, 176), new Vector2(0 * 176, 0 * 176));
 
-            //grid[6, 6].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
-            grid[1, 1] = Right_Bottom;
-            grid[6, 5] = Left_Bottom_Top;
-
-            for (int i = 1; i < 12; i++)
+            for (int i = 0; i < 13; i++)
             {
-                for (int k = 1; k < 12; k++)
+                for (int k = 0; k < 13; k++)
                 {
-                    //Center.Draw(spriteBatch, new Rectangle(176, 176, 176, 176), viewportPosition);
-                    grid[i, k].Draw(spriteBatch, new Rectangle(i * 176, k * 176, 176, 176), viewportPosition);
+                    Vector2 viewpos = new Vector2((((int)currentMap.X) * 176) - (88 + (int)viewportPosition.X), (((int)currentMap.Y) * 176) - (88 + (int)viewportPosition.Y));
+                    grid[i, k].Draw(spriteBatch, new Rectangle((i * 176) - (int)viewpos.X, (k * 176) - (int)viewpos.Y, 176, 176), viewpos);
+                    //grid[i, k].Draw(spriteBatch, new Rectangle(((i - (int)currentMap.X) * 176) + 88 + (int)viewportPosition.X / 2, ((k - (int)currentMap.Y) * 176) + 88 + (int)viewportPosition.Y / 2, 176, 176), new Vector2(0, 0));
+
                 }
             }
+
+            spriteBatch.End();
+
+            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            //spriteBatch.Draw(test, Vector2.Zero, Color.White);
 
             spriteBatch.End();
 
