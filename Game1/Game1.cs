@@ -518,78 +518,47 @@ namespace Game1
                                     maplist.Add(Right_Top_Bottom);
                                 }
                             }
-                            else
+                            else // left and right not true, top and bottom are true
                             {
-                                maplist.Add(Bottom_Top); //top bottom
                                 if (Connect_Right[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Bottom_Top);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Bottom_Top);
+                                        maplist.Add(Left_Bottom_Top);
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Bottom_Top);
+                                        maplist.Add(Right_Top_Bottom);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Bottom_Top);
+                                        maplist.Add(Right_Top_Bottom);
+                                        maplist.Add(Left_Bottom_Top);
+                                        maplist.Add(All);
+                                    }
                                 }
                             }
                         }
                     }
-                    else
+                    else //Bottom not true, Top true
                     {
                         if (Connect_Left[X_Order[k], Y_Order[k]] is true)
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true)
                             {
-                                maplist.Add(Right_Top_Left); //add top right left
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
                                 if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    maplist.Add(Right_Top_Left);
                                 }
                                 else
                                 {
