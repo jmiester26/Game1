@@ -1148,6 +1148,7 @@ namespace Game1
                                                 maplist.Add(Left_Right);
                                                 maplist.Add(Right1);
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
                                             }
                                         }
                                     }
