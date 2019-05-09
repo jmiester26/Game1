@@ -612,6 +612,7 @@ namespace Game1
                                     else
                                     {
                                         maplist.Add(Right_Top);
+                                        maplist.Add(Right_Top_Bottom);
                                     }
                                 }
                                 else
@@ -619,47 +620,87 @@ namespace Game1
                                     if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
                                     {
                                         maplist.Add(Right_Top);
+                                        maplist.Add(Right_Top_Left);
                                     }
                                     else
                                     {
                                         maplist.Add(Right_Top);
+                                        maplist.Add(Right_Top_Bottom);
+                                        maplist.Add(Right_Top_Left);
+                                        maplist.Add(All);
+
                                     }
                                 }
                             }
                             else // Left and Bottom and Right not true, Top is true
                             {
-                                maplist.Add(Top);//add top
                                 if (Connect_Right[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Top);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Bottom_Top);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Left_Top);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Left_Top);
+                                            maplist.Add(Bottom_Top);
+                                        }
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Right_Top);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Right_Top);
+                                            maplist.Add(Bottom_Top);
+                                            maplist.Add(Right_Top_Bottom);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Right_Top);
+                                            maplist.Add(Left_Top);
+                                            maplist.Add(Right_Top_Left);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Top);
+                                            maplist.Add(Right_Top);
+                                            maplist.Add(Bottom_Top);
+                                            maplist.Add(Left_Bottom_Top);
+                                            maplist.Add(Left_Top);
+                                            maplist.Add(Right_Top_Bottom);
+                                            maplist.Add(Right_Top_Left);
+                                            maplist.Add(All);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -671,151 +712,151 @@ namespace Game1
                     {
                         if (Connect_Left[X_Order[k], Y_Order[k]] is true)
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) // Top is not true, Left and bottom and right are true
                             {
-                                maplist.Add(Left_Bottom_Right); //add right left bottom
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
                                 if (Connect_Top[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    maplist.Add(Left_Bottom_Right);
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    maplist.Add(Left_Bottom_Right);
+                                    maplist.Add(All);
                                 }
                             }
-                            else
+                            else //Top and Right are not true, Left and Bottom are true
                             {
-                                maplist.Add(Left_Bottom); //left bottom
                                 if (Connect_Right[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Left_Bottom);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Left_Bottom);
+                                        maplist.Add(Left_Bottom_Top);
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Left_Bottom);
+                                        maplist.Add(Left_Bottom_Right);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Left_Bottom);
+                                        maplist.Add(Left_Bottom_Right);
+                                        maplist.Add(Left_Bottom_Top);
+                                        maplist.Add(All);
+                                    }
                                 }
                             }
                         }
-                        else
+                        else // Left and top are not true
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) //Right and bottom are true
                             {
-                                maplist.Add(Right_Bottom); //right bottom
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
                                 if (Connect_Left[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Right_Bottom);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Right_Bottom);
+                                        maplist.Add(Right_Top_Bottom);
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Right_Bottom);
+                                        maplist.Add(Left_Bottom_Right);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Right_Bottom);
+                                        maplist.Add(Right_Top_Bottom);
+                                        maplist.Add(Left_Bottom_Right);
+                                        maplist.Add(All);
+                                    }
                                 }
                             }
-                            else
+                            else // Top and Right and Left are not true, Bottom is true
                             {
-                                maplist.Add(Bottom); //add bottom
+                                maplist.Add(Bottom);
                                 if (Connect_Right[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Bottom);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Bottom_Top);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Left_Bottom);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Left_Bottom);
+                                            maplist.Add(Bottom_Top);
+                                        }
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Right_Bottom);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Right_Bottom);
+                                            maplist.Add(Bottom_Top);
+                                            maplist.Add(Right_Top_Bottom);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Right_Bottom);
+                                            maplist.Add(Left_Bottom);
+                                            maplist.Add(Left_Bottom_Right);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Bottom);
+                                            maplist.Add(Right_Bottom);
+                                            maplist.Add(Bottom_Top);
+                                            maplist.Add(Left_Bottom_Top);
+                                            maplist.Add(Left_Bottom);
+                                            maplist.Add(Right_Top_Bottom);
+                                            maplist.Add(Left_Bottom_Right);
+                                            maplist.Add(All);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -826,73 +867,85 @@ namespace Game1
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true) //down, up not true
                             {
-                                maplist.Add(Left_Right);
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
                                 if (Connect_Top[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Left_Right);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Left_Right);
+                                        maplist.Add(Left_Bottom_Right);
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        maplist.Add(Left_Right);
+                                        maplist.Add(Right_Top_Left);
+                                    }
+                                    else
+                                    {
+                                        maplist.Add(Left_Right);
+                                        maplist.Add(Left_Bottom_Right);
+                                        maplist.Add(Right_Top_Left);
+                                        maplist.Add(All);
+                                    }
                                 }
                             }
                             else // right, down, up not true
                             {
                                 if (Connect_Right[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Left1);
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -900,42 +953,204 @@ namespace Game1
                         {
                             if (Connect_Right[X_Order[k], Y_Order[k]] is true) //left, down, up not true
                             {
-                                maplist.Add(Right1);
+                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                {
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Right1);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Right_Bottom);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Right_Top);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Right_Bottom);
+                                            maplist.Add(Right_Top);
+                                            maplist.Add(Right_Top_Bottom);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Left_Right);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Right_Bottom);
+                                            maplist.Add(Left_Right);
+                                            maplist.Add(Left_Bottom_Right);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Right_Top);
+                                            maplist.Add(Left_Right);
+                                            maplist.Add(Right_Top_Left);
+                                        }
+                                        else
+                                        {
+                                            maplist.Add(Right1);
+                                            maplist.Add(Right_Bottom);
+                                            maplist.Add(Right_Top);
+                                            maplist.Add(Right_Top_Bottom);
+                                            maplist.Add(Left_Right);
+                                            maplist.Add(Right_Top_Left);
+                                            maplist.Add(Left_Bottom_Right);
+                                            maplist.Add(All);
+                                        }
+                                    }
+                                }
                             }
                             else //all not true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
-                                {
-                                    maplist.Add(Wall);
-                                }
-                                else
-                                {
-                                    maplist.Add(Wall);
-                                    maplist.Add(Right1);
-                                }
                                 if (Connect_Left[X_Order[k], Y_Order[k]] is false)
                                 {
-
+                                    if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                    }
                                 }
                                 else
                                 {
-
-                                }
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
-                                }
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
-                                {
-
-                                }
-                                else
-                                {
-
+                                    if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            {
+                                                maplist.Add(All);
+                                                maplist.Add(Right_Top_Left);
+                                                maplist.Add(Left_Top);
+                                                maplist.Add(Right_Top);
+                                                maplist.Add(Top);
+                                                maplist.Add(Left_Right);
+                                                maplist.Add(Right1);
+                                                maplist.Add(Left1);
+                                            }
+                                            else
+                                            {
+                                                maplist.Add(All);
+                                                maplist.Add(Left_Bottom_Top);
+                                                maplist.Add(Right_Top_Bottom);
+                                                maplist.Add(Bottom_Top);
+                                                maplist.Add(Right_Top_Left);
+                                                maplist.Add(Left_Top);
+                                                maplist.Add(Right_Top);
+                                                maplist.Add(Top);
+                                                maplist.Add(Left_Bottom_Right);
+                                                maplist.Add(Left_Bottom);
+                                                maplist.Add(Right_Bottom);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Left_Right);
+                                                maplist.Add(Right1);
+                                                maplist.Add(Left1);
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
