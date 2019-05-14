@@ -1087,10 +1087,14 @@ namespace Game1
                                             if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
                                             {
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
                                             }
                                             else
                                             {
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Left_Bottom);
                                             }
                                         }
                                         else
@@ -1098,10 +1102,20 @@ namespace Game1
                                             if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
                                             {
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
+                                                maplist.Add(Top);
+                                                maplist.Add(Left_Top);
                                             }
                                             else
                                             {
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Left_Bottom);
+                                                maplist.Add(Top);
+                                                maplist.Add(Left_Top);
+                                                maplist.Add(Bottom_Top);
+                                                maplist.Add(Left_Bottom_Top);
                                             }
                                         }
                                     }
@@ -1111,18 +1125,27 @@ namespace Game1
                                         {
                                             if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
                                             {
+                                                maplist.Add(Left_Right);
+                                                maplist.Add(Right1);
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
                                             }
                                             else
                                             {
+                                                maplist.Add(Left_Bottom_Right);
+                                                maplist.Add(Left_Bottom);
+                                                maplist.Add(Right_Bottom);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Left_Right);
+                                                maplist.Add(Right1);
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
                                             }
                                         }
                                         else
                                         {
                                             if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
                                             {
-                                                maplist.Add(All);
                                                 maplist.Add(Right_Top_Left);
                                                 maplist.Add(Left_Top);
                                                 maplist.Add(Right_Top);
@@ -1130,6 +1153,7 @@ namespace Game1
                                                 maplist.Add(Left_Right);
                                                 maplist.Add(Right1);
                                                 maplist.Add(Left1);
+                                                maplist.Add(Wall);
                                             }
                                             else
                                             {
