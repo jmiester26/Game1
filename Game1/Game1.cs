@@ -386,55 +386,62 @@ namespace Game1
             Y_Order[119] = 1;
 
 
-            bool[,] Connect_Top = new bool[13, 13];
-            bool[,] Connect_Right = new bool[13, 13];
-            bool[,] Connect_Left = new bool[13, 13];
-            bool[,] Connect_Bottom = new bool[13, 13];
+            int[,] Connect_Top = new int[13, 13];
+            int[,] Connect_Right = new int[13, 13];
+            int[,] Connect_Left = new int[13, 13];
+            int[,] Connect_Bottom = new int[13, 13];
 
             for (int i = 0; i < 13; i++)
             {
                 for (int j = 0; j < 13; j++)
                 {
+
+                    Connect_Bottom[i, j] = 2;
+                    Connect_Top[i, j] = 2;
+                    Connect_Left[i, j] = 2;
+                    Connect_Right[i, j] = 2;
+
+
                     if (j == 0)
                     {
-                        Connect_Bottom[i, j] = false;
-                        Connect_Top[i, j] = false;
-                        Connect_Left[i, j] = false;
-                        Connect_Right[i, j] = false;
+                        Connect_Bottom[i, j] = 0;
+                        Connect_Top[i, j] = 0;
+                        Connect_Left[i, j] = 0;
+                        Connect_Right[i, j] = 0;
                         grid[i, j] = Wall;
                     }
                     if (i == 0)
                     {
-                        Connect_Bottom[i, j] = false;
-                        Connect_Top[i, j] = false;
-                        Connect_Left[i, j] = false;
-                        Connect_Right[i, j] = false;
+                        Connect_Bottom[i, j] = 0;
+                        Connect_Top[i, j] = 0;
+                        Connect_Left[i, j] = 0;
+                        Connect_Right[i, j] = 0;
                         grid[i, j] = Wall;
                     }
                     if (j == 12)
                     {
-                        Connect_Bottom[i, j] = false;
-                        Connect_Top[i, j] = false;
-                        Connect_Left[i, j] = false;
-                        Connect_Right[i, j] = false;
+                        Connect_Bottom[i, j] = 0;
+                        Connect_Top[i, j] = 0;
+                        Connect_Left[i, j] = 0;
+                        Connect_Right[i, j] = 0;
                         grid[i, j] = Wall;
                     }
                     if (i == 12)
                     {
-                        Connect_Bottom[i, j] = false;
-                        Connect_Top[i, j] = false;
-                        Connect_Left[i, j] = false;
-                        Connect_Right[i, j] = false;
+                        Connect_Bottom[i, j] = 0;
+                        Connect_Top[i, j] = 0;
+                        Connect_Left[i, j] = 0;
+                        Connect_Right[i, j] = 0;
                         grid[i, j] = Wall;
                     }
                 }
             }
 
             grid[6, 6] = Center;
-            Connect_Bottom[6, 6] = true;
-            Connect_Top[6, 6] = true;
-            Connect_Left[6, 6] = true;
-            Connect_Right[6, 6] = true;
+            Connect_Bottom[6, 6] = 1;
+            Connect_Top[6, 6] = 1;
+            Connect_Left[6, 6] = 1;
+            Connect_Right[6, 6] = 1;
 
             int k = 0;
 
@@ -450,29 +457,29 @@ namespace Game1
                 maplist.Clear();
                 //-------------------------------------------------------------------------------------------
 
-                if (Connect_Bottom[X_Order[k], Y_Order[k] + 1] is false)
-                    Connect_Top[X_Order[k], Y_Order[k]] = false;
+                if (Connect_Bottom[X_Order[k], Y_Order[k] + 1] == 0)
+                    Connect_Top[X_Order[k], Y_Order[k]] = 0;
 
-                if (Connect_Bottom[X_Order[k], Y_Order[k] + 1] is true)
-                    Connect_Top[X_Order[k], Y_Order[k]] = true;
+                if (Connect_Bottom[X_Order[k], Y_Order[k] + 1] == 1)
+                    Connect_Top[X_Order[k], Y_Order[k]] = 1;
 
-                if (Connect_Top[X_Order[k], Y_Order[k] - 1] is false)
-                    Connect_Bottom[X_Order[k], Y_Order[k]] = false;
+                if (Connect_Top[X_Order[k], Y_Order[k] - 1] == 0)
+                    Connect_Bottom[X_Order[k], Y_Order[k]] = 0;
 
-                if (Connect_Top[X_Order[k], Y_Order[k] - 1] is true)
-                    Connect_Bottom[X_Order[k], Y_Order[k]] = true;
+                if (Connect_Top[X_Order[k], Y_Order[k] - 1] == 1)
+                    Connect_Bottom[X_Order[k], Y_Order[k]] = 1;
 
-                if (Connect_Left[X_Order[k] + 1, Y_Order[k]] is false)
-                    Connect_Right[X_Order[k], Y_Order[k]] = false;
+                if (Connect_Left[X_Order[k] + 1, Y_Order[k]] == 0)
+                    Connect_Right[X_Order[k], Y_Order[k]] = 0;
 
-                if (Connect_Left[X_Order[k] + 1, Y_Order[k]] is true)
-                    Connect_Right[X_Order[k], Y_Order[k]] = true;
+                if (Connect_Left[X_Order[k] + 1, Y_Order[k]] == 1)
+                    Connect_Right[X_Order[k], Y_Order[k]] = 1;
 
-                if (Connect_Right[X_Order[k] - 1, Y_Order[k]] is false)
-                    Connect_Left[X_Order[k], Y_Order[k]] = false;
+                if (Connect_Right[X_Order[k] - 1, Y_Order[k]] == 0)
+                    Connect_Left[X_Order[k], Y_Order[k]] = 0;
 
-                if (Connect_Right[X_Order[k] - 1, Y_Order[k]] is true)
-                    Connect_Left[X_Order[k], Y_Order[k]] = true;
+                if (Connect_Right[X_Order[k] - 1, Y_Order[k]] == 1)
+                    Connect_Left[X_Order[k], Y_Order[k]] = 1;
                 //-------------------------------------------------------------------------
                 //Checks to see what the tile k can connect to based on the Arrays for 
                 //Connect_Left, Connect_Bottom and so on.
@@ -483,23 +490,23 @@ namespace Game1
 
                 //-------------------------------------------------------------------------
 
-                if (Connect_Top[X_Order[k], Y_Order[k]] is true)
+                if (Connect_Top[X_Order[k], Y_Order[k]] == 1)
                 {
-                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is true)
+                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 1)
                     {
-                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        if (Connect_Left[X_Order[k], Y_Order[k]] == 1)
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1)
                             {
                                 maplist.Add(All);
                             }
                             else // right not true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
                                     maplist.Add(Left_Bottom_Top);
                                 }
-                                else
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                 {
                                     maplist.Add(Left_Bottom_Top);
                                     maplist.Add(All);
@@ -508,13 +515,13 @@ namespace Game1
                         }
                         else
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) // left not true
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1) // left not true
                             {
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                 {
                                     maplist.Add(Right_Top_Bottom);
                                 }
-                                else
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                 {
                                     maplist.Add(All);
                                     maplist.Add(Right_Top_Bottom);
@@ -522,26 +529,26 @@ namespace Game1
                             }
                             else // left and right not true, top and bottom are true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Bottom_Top);
                                     }
-                                    else
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Bottom_Top);
                                         maplist.Add(Left_Bottom_Top);
                                     }
                                 }
-                                else
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Bottom_Top);
                                         maplist.Add(Right_Top_Bottom);
                                     }
-                                    else
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Bottom_Top);
                                         maplist.Add(Right_Top_Bottom);
@@ -554,15 +561,15 @@ namespace Game1
                     }
                     else //Bottom not true, Top true
                     {
-                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        if (Connect_Left[X_Order[k], Y_Order[k]] == 1)
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true)
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1)
                             {
-                                if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                 {
                                     maplist.Add(Right_Top_Left);
                                 }
-                                else
+                                if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                 {
                                     maplist.Add(Right_Top_Left);
                                     maplist.Add(All);
@@ -570,26 +577,26 @@ namespace Game1
                             }
                             else //Bottom and Right not true, top and left is true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Left_Top);
                                     }
-                                    else
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Left_Top);
                                         maplist.Add(Left_Bottom_Top);
                                     }
                                 }
-                                else
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Right_Top_Left);
                                         maplist.Add(Left_Top);
                                     }
-                                    else
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Left_Top);
                                         maplist.Add(Right_Top_Left);
@@ -601,28 +608,28 @@ namespace Game1
                         }
                         else
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) //Left and Bottom not true, Right and Top True
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1) //Left and Bottom not true, Right and Top True
                             {
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Right_Top);
                                     }
-                                    else
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Right_Top);
                                         maplist.Add(Right_Top_Bottom);
                                     }
                                 }
-                                else
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Right_Top);
                                         maplist.Add(Right_Top_Left);
                                     }
-                                    else
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Right_Top);
                                         maplist.Add(Right_Top_Bottom);
@@ -634,28 +641,28 @@ namespace Game1
                             }
                             else // Left and Bottom and Right not true, Top is true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Top);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Bottom_Top);
                                         }
                                     }
-                                    else
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Left_Top);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Left_Top);
@@ -663,16 +670,16 @@ namespace Game1
                                         }
                                     }
                                 }
-                                else
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Right_Top);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Right_Top);
@@ -680,16 +687,16 @@ namespace Game1
                                             maplist.Add(Right_Top_Bottom);
                                         }
                                     }
-                                    else
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Right_Top);
                                             maplist.Add(Left_Top);
                                             maplist.Add(Right_Top_Left);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Top);
                                             maplist.Add(Right_Top);
@@ -708,17 +715,17 @@ namespace Game1
                 }
                 else
                 {
-                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is true)
+                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 1)
                     {
-                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        if (Connect_Left[X_Order[k], Y_Order[k]] == 1)
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) // Top is not true, Left and bottom and right are true
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1) // Top is not true, Left and bottom and right are true
                             {
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                 {
                                     maplist.Add(Left_Bottom_Right);
                                 }
-                                else
+                                if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                 {
                                     maplist.Add(Left_Bottom_Right);
                                     maplist.Add(All);
@@ -726,26 +733,26 @@ namespace Game1
                             }
                             else //Top and Right are not true, Left and Bottom are true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Left_Bottom);
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Left_Bottom);
                                         maplist.Add(Left_Bottom_Top);
                                     }
                                 }
-                                else
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Left_Bottom);
                                         maplist.Add(Left_Bottom_Right);
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Left_Bottom);
                                         maplist.Add(Left_Bottom_Right);
@@ -757,28 +764,28 @@ namespace Game1
                         }
                         else // Left and top are not true
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) //Right and bottom are true
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1) //Right and bottom are true
                             {
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Right_Bottom);
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Right_Bottom);
                                         maplist.Add(Right_Top_Bottom);
                                     }
                                 }
-                                else
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Right_Bottom);
                                         maplist.Add(Left_Bottom_Right);
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Right_Bottom);
                                         maplist.Add(Right_Top_Bottom);
@@ -790,28 +797,28 @@ namespace Game1
                             else // Top and Right and Left are not true, Bottom is true
                             {
                                 maplist.Add(Bottom);
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Bottom);
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Bottom_Top);
                                         }
                                     }
-                                    else
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Left_Bottom);
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Left_Bottom);
@@ -819,16 +826,16 @@ namespace Game1
                                         }
                                     }
                                 }
-                                else
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Right_Bottom);
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Right_Bottom);
@@ -836,16 +843,16 @@ namespace Game1
                                             maplist.Add(Right_Top_Bottom);
                                         }
                                     }
-                                    else
+                                    if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Right_Bottom);
                                             maplist.Add(Left_Bottom);
                                             maplist.Add(Left_Bottom_Right);
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Bottom);
                                             maplist.Add(Right_Bottom);
@@ -863,30 +870,30 @@ namespace Game1
                     }
                     else
                     {
-                        if (Connect_Left[X_Order[k], Y_Order[k]] is true)
+                        if (Connect_Left[X_Order[k], Y_Order[k]] == 1)
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) //down, up not true
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1) //down, up not true
                             {
-                                if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Left_Right);
                                     }
-                                    else
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Left_Right);
                                         maplist.Add(Left_Bottom_Right);
                                     }
                                 }
-                                else
+                                if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                     {
                                         maplist.Add(Left_Right);
                                         maplist.Add(Right_Top_Left);
                                     }
-                                    else
+                                    if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                     {
                                         maplist.Add(Left_Right);
                                         maplist.Add(Left_Bottom_Right);
@@ -897,53 +904,72 @@ namespace Game1
                             }
                             else // right, down, up not true
                             {
-                                if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Left1);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Bottom);
                                         }
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Top);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Bottom);
+                                            maplist.Add(Left_Bottom_Top);
+                                            maplist.Add(Left_Top);
                                         }
                                     }
                                 }
                                 else
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Right);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Bottom);
+                                            maplist.Add(Left_Bottom_Right);
+                                            maplist.Add(Left_Right);
                                         }
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Right);
+                                            maplist.Add(Left_Top);
+                                            maplist.Add(Right_Top_Left);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Left1);
+                                            maplist.Add(Left_Bottom);
+                                            maplist.Add(Left_Bottom_Right);
+                                            maplist.Add(Left_Bottom_Top);
+                                            maplist.Add(Left_Right);
+                                            maplist.Add(Left_Top);
+                                            maplist.Add(Right_Top_Left);
+                                            maplist.Add(All);
                                         }
                                     }
                                 }
@@ -951,30 +977,30 @@ namespace Game1
                         }
                         else
                         {
-                            if (Connect_Right[X_Order[k], Y_Order[k]] is true) //left, down, up not true
+                            if (Connect_Right[X_Order[k], Y_Order[k]] == 1) //left, down, up not true
                             {
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Right1);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Right_Bottom);
                                         }
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Right_Top);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Right_Bottom);
@@ -983,16 +1009,16 @@ namespace Game1
                                         }
                                     }
                                 }
-                                else
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Left_Right);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Right_Bottom);
@@ -1000,16 +1026,16 @@ namespace Game1
                                             maplist.Add(Left_Bottom_Right);
                                         }
                                     }
-                                    else
+                                    if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Right_Top);
                                             maplist.Add(Left_Right);
                                             maplist.Add(Right_Top_Left);
                                         }
-                                        else
+                                        if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                         {
                                             maplist.Add(Right1);
                                             maplist.Add(Right_Bottom);
@@ -1025,71 +1051,90 @@ namespace Game1
                             }
                             else //all not true
                             {
-                                if (Connect_Left[X_Order[k], Y_Order[k]] is false)
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 0)
                                 {
-                                    if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Wall);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Wall);
+                                                maplist.Add(Bottom);
                                             }
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Wall);
+                                                maplist.Add(Top);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Wall);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Top);
+                                                maplist.Add(Bottom_Top);
                                             }
                                         }
                                     }
-                                    else
+                                    if (Connect_Right[X_Order[k], Y_Order[k]] == 2)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Right1);
+                                                maplist.Add(Wall);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Right_Bottom);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Right1);
+                                                maplist.Add(Wall);
                                             }
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Right_Top);
+                                                maplist.Add(Top);
+                                                maplist.Add(Right1);
+                                                maplist.Add(Wall);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
-                                                maplist.Add(Left1);
+                                                maplist.Add(Right_Top_Bottom);
+                                                maplist.Add(Bottom_Top);
+                                                maplist.Add(Right_Top);
+                                                maplist.Add(Top);
+                                                maplist.Add(Right_Bottom);
+                                                maplist.Add(Bottom);
+                                                maplist.Add(Right1);
+                                                maplist.Add(Wall);
                                             }
                                         }
                                     }
                                 }
-                                else
+                                if (Connect_Left[X_Order[k], Y_Order[k]] == 2)
                                 {
-                                    if (Connect_Right[X_Order[k], Y_Order[k]] is false)
+                                    if (Connect_Right[X_Order[k], Y_Order[k]] == 0)
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
                                                 maplist.Add(Left1);
                                                 maplist.Add(Wall);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
                                                 maplist.Add(Left1);
                                                 maplist.Add(Wall);
@@ -1097,16 +1142,16 @@ namespace Game1
                                                 maplist.Add(Left_Bottom);
                                             }
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
                                                 maplist.Add(Left1);
                                                 maplist.Add(Wall);
                                                 maplist.Add(Top);
                                                 maplist.Add(Left_Top);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
                                                 maplist.Add(Left1);
                                                 maplist.Add(Wall);
@@ -1121,16 +1166,16 @@ namespace Game1
                                     }
                                     else
                                     {
-                                        if (Connect_Top[X_Order[k], Y_Order[k]] is false)
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 0)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
                                                 maplist.Add(Left_Right);
                                                 maplist.Add(Right1);
                                                 maplist.Add(Left1);
                                                 maplist.Add(Wall);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
                                                 maplist.Add(Left_Bottom_Right);
                                                 maplist.Add(Left_Bottom);
@@ -1142,9 +1187,9 @@ namespace Game1
                                                 maplist.Add(Wall);
                                             }
                                         }
-                                        else
+                                        if (Connect_Top[X_Order[k], Y_Order[k]] == 2)
                                         {
-                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] is false)
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 0)
                                             {
                                                 maplist.Add(Right_Top_Left);
                                                 maplist.Add(Left_Top);
@@ -1155,7 +1200,7 @@ namespace Game1
                                                 maplist.Add(Left1);
                                                 maplist.Add(Wall);
                                             }
-                                            else
+                                            if (Connect_Bottom[X_Order[k], Y_Order[k]] == 2)
                                             {
                                                 maplist.Add(All);
                                                 maplist.Add(Left_Bottom_Top);
@@ -1216,27 +1261,33 @@ namespace Game1
             //-------------------------------------------------------------------------
             if (!Down.Contains(grid[X_Order[k], Y_Order[k]]))
             {
-                Connect_Bottom[X_Order[k], Y_Order[k]] = false;
+                Connect_Bottom[X_Order[k], Y_Order[k]] = 0;
             }
             if (!Up.Contains(grid[X_Order[k], Y_Order[k]]))
             {
-                Connect_Top[X_Order[k], Y_Order[k]] = false;
+                Connect_Top[X_Order[k], Y_Order[k]] = 0;
             }
             if (!Left.Contains(grid[X_Order[k], Y_Order[k]]))
             {
-                Connect_Left[X_Order[k], Y_Order[k]] = false;
+                Connect_Left[X_Order[k], Y_Order[k]] = 0;
             }
             if (!Right.Contains(grid[X_Order[k], Y_Order[k]]))
             {
-                Connect_Right[X_Order[k], Y_Order[k]] = false;
+                Connect_Right[X_Order[k], Y_Order[k]] = 0;
             }
 
             //-------------------------------------------------------------------------
+
+            maplist.Clear();
 
             k = k + 1;
 
         }
       //loop end]
+            Console.WriteLine(Connect_Left[5,6]);
+            Console.WriteLine(Connect_Right[5,6]);
+            Console.WriteLine(Connect_Bottom[5,6]);
+            Console.WriteLine(Connect_Top[5,6]);
 
             // these loop will create a unique copy of the maps for each grid square
             for (int c = 0; c < 13; c++)
