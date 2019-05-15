@@ -1258,8 +1258,23 @@ namespace Game1
             {
                 grid[X_Order[k], Y_Order[k]] = maplist[0];
             }
-            //-------------------------------------------------------------------------
-            if (!Down.Contains(grid[X_Order[k], Y_Order[k]]))
+
+                Console.WriteLine(Connect_Bottom[X_Order[k], Y_Order[k]]);
+                Console.WriteLine(Connect_Top[X_Order[k], Y_Order[k] - 1]);
+
+                Console.WriteLine(Connect_Top[X_Order[k], Y_Order[k]]);
+                Console.WriteLine(Connect_Bottom[X_Order[k], Y_Order[k] + 1]);
+
+                Console.WriteLine(Connect_Left[X_Order[k], Y_Order[k]]);
+                Console.WriteLine(Connect_Right[X_Order[k] - 1, Y_Order[k]]);
+
+                Console.WriteLine(Connect_Right[X_Order[k], Y_Order[k]]);
+                Console.WriteLine(Connect_Left[X_Order[k] + 1, Y_Order[k]]);
+
+
+
+                //-------------------------------------------------------------------------
+                if (!Down.Contains(grid[X_Order[k], Y_Order[k]]))
             {
                 Connect_Bottom[X_Order[k], Y_Order[k]] = 0;
             }
